@@ -25,4 +25,9 @@ public class MainControl {
         m.addAttribute("rooms", rooms);
         return "book-main";
     }
+
+    @GetMapping("/login")
+    public String loginControl(Model m){
+        return "login";
+    }
 }
