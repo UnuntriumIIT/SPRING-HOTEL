@@ -1,6 +1,8 @@
 package com.ununtrium.hotel.Controllers;
 
+import com.ununtrium.hotel.Entity.Role;
 import com.ununtrium.hotel.Entity.Room;
+import com.ununtrium.hotel.Repository.RoleRepository;
 import com.ununtrium.hotel.Repository.RoomRepository;
 import com.ununtrium.hotel.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +43,11 @@ public class MainControl {
     @GetMapping("/login")
     public String loginControl(Model m){
         return "login";
+    }
+
+    @GetMapping("/deny")
+    public String accessDeny(Model m){
+        return "deny";
     }
 
     @GetMapping("/admin")
