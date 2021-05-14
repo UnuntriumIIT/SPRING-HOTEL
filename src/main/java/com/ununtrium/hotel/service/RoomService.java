@@ -18,7 +18,7 @@ public class RoomService {
         return roomFromDb.orElse(new Room());
     }
 
-    public List<Room> allRooms() {
+    public Iterable<Room> allRooms() {
         return roomRepository.findAll();
     }
 

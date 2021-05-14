@@ -4,15 +4,15 @@ import com.ununtrium.hotel.Entity.Role;
 import com.ununtrium.hotel.Entity.User;
 import com.ununtrium.hotel.Repository.RoleRepository;
 import com.ununtrium.hotel.Repository.UserRepository;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -41,7 +41,7 @@ public class UserService implements UserDetailsService {
         return userFromDb.orElse(new User());
     }
 
-    public List<User> allUsers() {
+    public Iterable<User> allUsers() {
         return userRepository.findAll();
     }
 
@@ -52,7 +52,7 @@ public class UserService implements UserDetailsService {
             return false;
         }
 
-        user.setRoles(Collections.singleton(roleRepository.getOne(1L)));
+        user.setRoles(Collections.singleton(new Role(1L, "ADMIN")));
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return true;

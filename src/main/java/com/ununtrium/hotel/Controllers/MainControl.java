@@ -11,8 +11,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 @Controller
 public class MainControl {
+    @PersistenceContext
+    EntityManager entityManager;
+
     @Autowired
     private UserService userService;
 
