@@ -1,8 +1,10 @@
 package com.ununtrium.hotel.Repository;
 
-import com.ununtrium.hotel.Entity.Room;
+import com.ununtrium.hotel.Entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RoomRepository extends JpaRepository<Room, Long> {}
+public interface UserRepository extends JpaRepository<User, Long> {
+    User findByUsername(String username);
+}

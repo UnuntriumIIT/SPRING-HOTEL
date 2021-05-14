@@ -1,20 +1,25 @@
 package com.ununtrium.hotel.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "t_room")
 public class Room {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @Column(name = "ID")
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
+    @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
+    private long id;
 
     private String room, descr;
     private boolean isBusy;
 
     public Room() {}
+
+    public long getId() {
+        return id;
+    }
 
     public String getRoom() {
         return room;
