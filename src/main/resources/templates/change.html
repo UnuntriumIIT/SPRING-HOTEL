@@ -19,7 +19,7 @@
                 <div>ID: <span th:text="${room.getId()}"></span></div>
                 <div>Занятость: <span th:text="${room.isBusy()}"></span></div>
                 <div>Кем занято: <span th:text="${room.getUserName()}"></span></div>
-                <div>Timestamp: <span th:text="${room.getDateTime()}"></span></div>
+                <div>Timestamp: <span th:text="${room.getDatetime()}"></span></div>
                 <div><a th:href="@{/delete_room(roomId=${room.getId()})}" class="btn btn-danger">Delete</a> <a th:href="@{/edit_room(roomId=${room.getId()})}" class="btn btn-primary">Edit</a></div>
             </div>
         </div>

@@ -4,6 +4,8 @@ import com.ununtrium.hotel.Entity.Room;
 import com.ununtrium.hotel.Repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.sql.Timestamp;
 import java.util.Optional;
 
 @Service
@@ -36,6 +38,8 @@ public class RoomService {
         }
 
         if (flag) {
+            Timestamp t = new Timestamp(System.currentTimeMillis());
+            room.setDatetime(t.toString());
             roomRepository.save(room);
         }
         return flag;

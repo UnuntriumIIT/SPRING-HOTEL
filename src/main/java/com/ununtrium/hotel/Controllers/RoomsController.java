@@ -33,7 +33,6 @@ public class RoomsController {
     @GetMapping("/admin/change")
     public String listRooms(Model model) {
         Iterable<Room> rooms = roomRepository.findAll();
-        Timestamp t = LocalDateTime.now();
         model.addAttribute("allRooms", rooms);
         model.addAttribute("roomForm", new Room());
         return "change";

@@ -12,10 +12,12 @@ public class Room {
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
     @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
     private long id;
-    private String room, descr, userName;
+    private String room;
+    private String descr;
+    private String userName;
+    private String datetime;
     private boolean busy;
     private float cost;
-    private Timestamp datetime;
 
     public Room() {}
 
@@ -63,11 +65,11 @@ public class Room {
         this.busy = busy;
     }
 
-    public Timestamp getDatetime() {
-        return datetime;
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
     }
 
-    public void setDatetime(Timestamp datetime) {
-        this.datetime = datetime;
+    public String getDatetime() {
+        return datetime;
     }
 }
