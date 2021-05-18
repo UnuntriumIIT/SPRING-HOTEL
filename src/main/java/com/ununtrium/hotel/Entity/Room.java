@@ -1,6 +1,7 @@
 package com.ununtrium.hotel.Entity;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "t_room")
@@ -11,11 +12,28 @@ public class Room {
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
     @SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
     private long id;
-
-    private String room, descr;
-    private boolean isBusy;
+    private String room, descr, userName;
+    private boolean busy;
+    private float cost;
+    private Timestamp datetime;
 
     public Room() {}
+
+    public float getCost() {
+        return cost;
+    }
+
+    public void setCost(float cost) {
+        this.cost = cost;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     public long getId() {
         return id;
@@ -38,10 +56,18 @@ public class Room {
     }
 
     public boolean isBusy() {
-        return isBusy;
+        return busy;
     }
 
     public void setBusy(boolean busy) {
-        isBusy = busy;
+        this.busy = busy;
+    }
+
+    public Timestamp getDatetime() {
+        return datetime;
+    }
+
+    public void setDatetime(Timestamp datetime) {
+        this.datetime = datetime;
     }
 }

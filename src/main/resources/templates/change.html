@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <title>Редактировать комнату</title>
+</head>
+<body>
+<header th:insert="fragments/header.html :: header"/>
+<main>
+    <div class="d-flex justify-content-center align-items-center align-self-center">
+        <a class="btn btn-outline-primary" id="addBtn" href="/admin/add">Добавить комнату</a>
+    </div>
+    <div class="d-flex justify-content-center align-items-center align-self-center flex-wrap">
+        <div th:each="room: ${allRooms}" class="mb-3 border border-light w-25">
+            <div class="mx-1 px-3">
+                <div>Номер комнаты: <span th:text="${room.getRoom()}"></span></div>
+                <div>Описание: <span th:text="${room.getDescr()}"></span></div>
+                <div>Стоимость: <span th:text="${room.getCost()}"></span></div>
+                <div>ID: <span th:text="${room.getId()}"></span></div>
+                <div>Занятость: <span th:text="${room.isBusy()}"></span></div>
+                <div>Кем занято: <span th:text="${room.getUserName()}"></span></div>
+                <div>Timestamp: <span th:text="${room.getDateTime()}"></span></div>
+                <div><a th:href="@{/delete_room(roomId=${room.getId()})}" class="btn btn-danger">Delete</a> <a th:href="@{/edit_room(roomId=${room.getId()})}" class="btn btn-primary">Edit</a></div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

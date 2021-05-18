@@ -4,7 +4,6 @@ import com.ununtrium.hotel.Entity.Room;
 import com.ununtrium.hotel.Repository.RoomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -23,9 +22,43 @@ public class RoomService {
     }
 
     public boolean saveRoom(Room room) {
-        if (roomRepository.findById(room.getId()) != null) return false;
-        roomRepository.save(room);
-        return true;
+        Iterable<Room> a = this.allRooms();
+        boolean flag = true;
+        for (Room r: a) {
+            if (r.getId() == room.getId()
+                    || r.getRoom().equals(room.getRoom())
+                    || room.getRoom().equals("")
+                    || room.getRoom() == null
+                    || room.getRoom() == ""){
+                flag = false;
+                break;
+            }
+        }
+
+        if (flag) {
+            roomRepository.save(room);
+        }
+        return flag;
+    }
+
+    public boolean saveRoom(Room newRoom, Long roomId) {
+        Iterable<Room> a = this.allRooms();
+        Room oldRoom = roomRepository.findById(roomId).get();
+        boolean flag = true;
+        for (Room r: a) {
+            if (r.getId() != roomId) {
+                if (newRoom.getRoom() == r.getRoom()){
+                    flag = false;
+                    break;
+                }
+            }
+        }
+
+        if (flag) {
+            roomRepository.deleteById(roomId);
+            roomRepository.save(newRoom);
+        }
+        return flag;
     }
 
     public boolean deleteRoom(Long Id) {

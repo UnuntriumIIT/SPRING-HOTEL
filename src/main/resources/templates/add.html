@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <title>Добавить комнату</title>
+    </head>
+    <body>
+        <header th:insert="fragments/header.html :: header"/>
+        <main class="mx-auto" style="width: 300px;">
+            </div>
+            <form th:action="@{/admin/add}" method="post">
+                <div class="form-group">
+                    <label for="room">Номер комнаты</label>
+                    <input name="room" type="text" class="form-control" id="room" placeholder="Введите номер комнаты" required>
+                </div>
+                <div class="form-group">
+                    <label for="cost">Стоимость</label>
+                    <input name="cost" type="text" class="form-control" id="cost" placeholder="Введите стоимость комнаты">
+                </div>
+                <div class="form-group">
+                    <label for="descr">Описание</label>
+                    <input name="descr" type="text" class="form-control" id="descr" placeholder="Введите описание для комнаты">
+                    <input name="busy" type="checkbox">Занято
+                </div>
+                <input name="userName" style="display:none;" type="text" th:value="${#authentication.getPrincipal().getUsername()}">
+                <button type="submit" class="btn btn-primary">Подтвердить</button>
+            </form>
+        </main>
+    </body>
+</html>

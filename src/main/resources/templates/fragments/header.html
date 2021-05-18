@@ -4,14 +4,11 @@
     <nav class="my-2 my-md-0 me-md-3">
         <a class="p-2 text-dark" href="/">Главная</a>
         <a class="p-2 text-dark" href="/booking">Забронировать</a>
-        <a class="p-2 text-dark" href="/booklist">Список брони</a>
-        <a class="p-2 text-dark" href="/admin">Изменение номеров</a>
+        <a sec:authorize="hasRole('ROLE_ADMIN')" class="p-2 text-dark" href="/admin/change">Изменение номеров</a>
     </nav>
     <a sec:authorize="!isAuthenticated()" class="btn btn-outline-primary" href="/login">Войти</a>
-    <a sec:authorize="!isAuthenticated()" class="btn btn-outline-primary" href="/registration">Регистрация</a>
-    <span sec:authorize="isAuthenticated()">
-                | Logged user: <span sec:authentication="name"></span> |
-                Roles: <span sec:authentication="role"></span> |
+    <a sec:authorize="!isAuthenticated()" class="btn btn-outline-primary" style="margin-left: 3px" href="/registration">Регистрация</a>
+    <span sec:authorize="isAuthenticated()" style="padding-left: 10px;">Logged user: <span sec:authentication="name"></span>
                 <a th:href="@{/logout}">Sign Out</a>
             </span>
 </header>
