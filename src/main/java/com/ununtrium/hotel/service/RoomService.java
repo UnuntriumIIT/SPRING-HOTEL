@@ -2,22 +2,17 @@ package com.ununtrium.hotel.service;
 
 import com.ununtrium.hotel.Entity.Room;
 import com.ununtrium.hotel.Repository.RoomRepository;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
-import java.util.Optional;
 
 @Service
 public class RoomService {
 
     @Autowired
     RoomRepository roomRepository;
-
-    public Room findRoomById(Long Id) {
-        Optional<Room> roomFromDb = roomRepository.findById(Id);
-        return roomFromDb.orElse(new Room());
-    }
 
     public Iterable<Room> allRooms() {
         return roomRepository.findAll();
@@ -47,7 +42,6 @@ public class RoomService {
 
     public boolean saveRoom(Room newRoom, Long roomId) {
         Iterable<Room> a = this.allRooms();
-        Room oldRoom = roomRepository.findById(roomId).get();
         boolean flag = true;
         for (Room r: a) {
             if (r.getId() != roomId) {
@@ -63,6 +57,23 @@ public class RoomService {
             roomRepository.save(newRoom);
         }
         return flag;
+    }
+
+    public Room findRoomByID(Long roomId) throws NotFoundException {
+        Room r = roomRepository.findById(roomId).orElseThrow(() -> new NotFoundException("Room cannot be found!"));
+        return r;
+    }
+
+    public Room findRoomByNumber(String number) throws NotFoundException {
+        Iterable<Room> allRm = this.allRooms();
+        Room r = new Room();
+        for (Room room: allRm) {
+            if (room.getRoom().equals(number)) {
+                r = room;
+                break;
+            }
+        }
+        return r;
     }
 
     public boolean deleteRoom(Long Id) {

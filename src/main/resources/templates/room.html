@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title th:text="Booking"/>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" />
     </head>
     <body>
         <header th:insert="fragments/header.html :: header"/>
@@ -16,6 +16,10 @@
                 <div class="form-floating">
                     <input class="form-control" type="text" name="descr" id="descr" th:value="${descr}" placeholder="Описание">
                     <label for="descr">Описание</label>
+                </div>
+                <div class="form-floating">
+                    <input class="form-control" type="text" name="cost" id="cost" th:value="${cost}" placeholder="Стоимость">
+                    <label for="cost">Стоимость</label>
                 </div>
                 <div class="form-floating">
                     <input class="form-control" type="text" name="userName" id="username" th:value="${user}" placeholder="User">
