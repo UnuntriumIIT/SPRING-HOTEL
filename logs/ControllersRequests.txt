@@ -1,4 +1,12 @@
-мая 30, 2021 5:25:05 PM com.ununtrium.hotel.HotelApplication main
+мая 31, 2021 1:32:23 AM com.ununtrium.hotel.HotelApplication main
 INFO: STARTED APPLICATION
-мая 30, 2021 5:25:05 PM com.ununtrium.hotel.HotelApplication main
+мая 31, 2021 1:32:24 AM com.ununtrium.hotel.HotelApplication main
 INFO: STARTED APPLICATION
+мая 31, 2021 1:32:36 AM com.ununtrium.hotel.Controllers.MainControl homeControl
+INFO: GET Request URL: "/"
+мая 31, 2021 1:32:38 AM com.ununtrium.hotel.Controllers.RegistrationController registration
+INFO: GET Request URL: "/registration"
+мая 31, 2021 1:32:42 AM com.ununtrium.hotel.Controllers.RegistrationController addUser
+INFO: POST Request URL: "/registration"
+мая 31, 2021 1:32:42 AM com.ununtrium.hotel.Controllers.MainControl homeControl
+INFO: GET Request URL: "/"

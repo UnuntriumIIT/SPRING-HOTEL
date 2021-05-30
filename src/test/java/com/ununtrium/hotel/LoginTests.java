@@ -53,7 +53,7 @@ class LoginTests {
 		this.mockMvc.perform(post("/login").param("user", "testuser999999"))
 				.andDo(print())
 				.andExpect(status().is3xxRedirection())
-				.andExpect(redirectedUrl("/"));
+				.andExpect(redirectedUrl("/login?error"));
 	}
 
 }

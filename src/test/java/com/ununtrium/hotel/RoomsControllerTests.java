@@ -34,7 +34,7 @@ class RoomsControllerTests {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(authenticated())
-                .andExpect(xpath("/html/body/main/div").nodeCount(4));
+                .andExpect(xpath("/html/body/main/div").nodeCount(3));
     }
 
     @Test

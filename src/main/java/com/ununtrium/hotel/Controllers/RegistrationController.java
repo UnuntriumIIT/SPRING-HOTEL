@@ -1,6 +1,7 @@
 package com.ununtrium.hotel.Controllers;
 
 import com.ununtrium.hotel.Entity.User;
+import com.ununtrium.hotel.service.RoleService;
 import com.ununtrium.hotel.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
